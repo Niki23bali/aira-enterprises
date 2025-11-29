@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aira Enterprises - Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* THEME VARIABLES */
+:root {
+  --bg-main: #050509;
+  --bg-soft: rgba(15, 23, 42, 0.96);
+  --card-bg: rgba(15, 23, 42, 0.98);
+  --accent: #ff3366;
+  --accent-gradient: linear-gradient(135deg, #ff7a3c, #ff3366);
+  --accent-soft: rgba(255, 51, 102, 0.25);
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-subtle: rgba(148, 163, 184, 0.45);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+  --radius-xl: 20px;
+  --blur: 18px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 51, 102, 0.12), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.12), transparent 55%),
+    #020617;
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAVBAR – same vibe as main site */
+header {
+  background: rgba(6, 6, 12, 0.94);
+  color: #fff;
+  padding: 14px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(var(--blur));
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: conic-gradient(from 140deg, #ff7a3c, #ff3366, #60a5fa, #22d3ee, #ff7a3c);
+  box-shadow: 0 0 22px rgba(248, 113, 113, 0.8);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  opacity: 0.84;
+  transition: 0.25s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent-gradient);
+  transition: width 0.25s ease;
+}
+
+nav a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.nav-btn {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background-image: var(--accent-gradient);
+  color: #050816;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 0 22px rgba(248, 113, 113, 0.6);
+  transition: 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  filter: brightness(1.05);
+  box-shadow: 0 0 30px rgba(248, 113, 113, 0.85);
+}
+
+/* BREADCRUMB / TOP BAR */
+.top-bar {
+  padding: 14px 7%;
+  font-size: 11px;
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.top-bar a {
+  color: #e5e7eb;
+}
+
+.top-bar strong {
+  color: var(--accent);
+}
+
+/* SHOP HERO / FILTER */
+.shop-hero {
+  padding: 26px 7% 10px;
+  position: relative;
+}
+
+.shop-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 10%;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.shop-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.shop-title h1 {
+  font-size: 26px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.shop-title p {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+/* FILTERS */
+.filters {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.filters input,
+.filters select {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  font-size: 12px;
+  outline: none;
+  background: rgba(15, 23, 42, 0.85);
+  color: var(--text-main);
+  min-width: 150px;
+}
+
+.filters input::placeholder {
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.4);
+}
+
+/* PRODUCT SECTION */
+.section {
+  padding: 18px 7% 45px;
+  position: relative;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  background:
+    radial-gradient(circle at 0 0, rgba(248, 113, 113, 0.12), transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.18), transparent 45%),
+    var(--card-bg);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, var(--accent-soft), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 1);
+  border-color: rgba(248, 113, 113, 0.9);
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-image {
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.32s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.06);
+}
+
+/* subtle badge on image */
+.product-image::after {
+  content: "Aira Pick";
+  position: absolute;
+  left: 14px;
+  top: 12px;
+  font-size: 10px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* PRODUCT INFO */
+.product-info {
+  padding: 13px 15px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.product-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.product-category {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.product-price {
+  font-size: 17px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* PRODUCT ACTIONS + BUTTONS */
+.product-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.btn-cart,
+.btn-outline {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cart {
+  background-image: var(--accent-gradient);
+  color: #050816;
+  box-shadow: 0 13px 30px rgba(248, 113, 113, 0.35);
+}
+
+.btn-cart:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(248, 113, 113, 0.45);
+}
+
+.btn-outline {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-main);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.btn-outline:hover {
+  background: rgba(15, 23, 42, 1);
+  border-color: var(--accent);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.9);
+}
+
+/* FOOTER */
+footer {
+  background: rgba(6, 6, 12, 0.98);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 16px 7%;
+  font-size: 12px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  header {
+    padding: 10px 5%;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .top-bar,
+  .shop-hero,
+  .section {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .shop-title h1 {
+    font-size: 22px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">Aira Enterprises</div>
+    <nav>
+      <ul>
+        <li><a href="online store.html">Home</a></li>
+        <li><a href="online store.html#services">Services</a></li>
+        <li><a href="online store.html#pricing">Pricing</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="online store.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-btn" onclick="window.location.href='auth.html'">
+      Login / Signup
+    </button>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="top-bar">
+    <a href="online store.html">Home</a> › <strong>Shop</strong>
+  </div>
+
+  <!-- SHOP HERO / FILTER -->
+  <section class="shop-hero">
+    <div class="shop-title">
+      <div>
+        <h1>Shop Our Products</h1>
+        <p>Right now, these are demo products. Later, you will add your real products here.</p>
+      </div>
+    </div>
+
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search products..." />
+      <select id="category">
+        <option value="">All Categories</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Home">Home & Living</option>
+        <option value="Beauty">Beauty</option>
+      </select>
+      <select id="sort">
+        <option value="">Sort by</option>
+        <option value="low-high">Price: Low to High</option>
+        <option value="high-low">Price: High to Low</option>
+        <option value="new">New Arrivals</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card" data-category="Fashion">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Casual White Sneakers</div>
+          <div class="product-category">Fashion</div>
+          <div class="product-price">₹1,299</div>
+          <div class="product-meta">
+            <span>Free Delivery</span>
+            <span>4.5 ★</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-cart">Add to Cart</button>
+            <button class="btn-outline">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" data-category="Electronics">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=900&q=80" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Wireless Headphones</div>
+          <div class="product-category">Electronics</div>
+          <div class="product-price">₹1,999</div>
+          <div class="product-meta">
+            <span>2 Day Delivery</span>
+            <span>4.2 ★</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-cart">Add to Cart</button>
+            <button class="btn-outline">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" data-category="Home">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Cozy Home Decor Set</div>
+          <div class="product-category">Home & Living</div>
+          <div class="product-price">₹899</div>
+          <div class="product-meta">
+            <span>COD Available</span>
+            <span>4.0 ★</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-cart">Add to Cart</button>
+            <button class="btn-outline">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card" data-category="Beauty">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80" alt="">
+        </div>
+        <div class="product-info">
+          <div class="product-title">Skincare Essentials Kit</div>
+          <div class="product-category">Beauty</div>
+          <div class="product-price">₹1,499</div>
+          <div class="product-meta">
+            <span>New Arrival</span>
+            <span>4.7 ★</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-cart">Add to Cart</button>
+            <button class="btn-outline">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Aira Enterprises · Shop
+  </footer>
+
+</body>
+</html>

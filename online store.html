@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aira Enterprises - Official Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* THEME VARIABLES */
+:root {
+  --bg-main: #050509;
+  --bg-card: rgba(14, 14, 20, 0.96);
+  --bg-soft: rgba(18, 18, 28, 0.96);
+  --accent: #ff3366;
+  --accent-soft: rgba(255, 51, 102, 0.25);
+  --accent-gradient: linear-gradient(135deg, #ff7a3c, #ff3366);
+  --text-main: #f7f7ff;
+  --text-muted: #9ca3af;
+  --border-subtle: rgba(148, 163, 184, 0.18);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+  --radius-xl: 22px;
+  --blur: 18px;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 51, 102, 0.12), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.12), transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(244, 244, 245, 0.08), transparent 55%),
+    #020617;
+  background-attachment: fixed;
+}
+
+/* Simple smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* GLASS NAVBAR */
+header {
+  background: rgba(6, 6, 12, 0.92);
+  color: #fff;
+  padding: 14px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(var(--blur));
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo::before {
+  content: "";
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: conic-gradient(from 140deg, #ff7a3c, #ff3366, #60a5fa, #22d3ee, #ff7a3c);
+  box-shadow: 0 0 24px rgba(248, 113, 113, 0.9);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+}
+
+nav a {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  opacity: 0.82;
+  transition: 0.25s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent-gradient);
+  transition: width 0.25s ease;
+}
+
+nav a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.nav-btn {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background-image: var(--accent-gradient);
+  color: #111;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  box-shadow: 0 0 22px rgba(248, 113, 113, 0.6);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  filter: brightness(1.05);
+  box-shadow: 0 0 30px rgba(248, 113, 113, 0.8);
+}
+
+/* HERO */
+.hero {
+  padding: 70px 8% 60px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 50px;
+  align-items: center;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 780px;
+  max-height: 780px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 60%),
+    radial-gradient(circle at 10% 10%, rgba(248, 113, 113, 0.25), transparent 55%),
+    radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.35), transparent 55%);
+  opacity: 0.18;
+  filter: blur(24px);
+  z-index: -1;
+}
+
+.hero h1 {
+  font-size: 44px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+}
+
+.hero h1 span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin: 12px 0 24px;
+  max-width: 520px;
+}
+
+.hero-tags {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.hero-tags::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.btn-primary,
+.btn-outline {
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.btn-primary {
+  background-image: var(--accent-gradient);
+  color: #050816;
+  box-shadow: 0 15px 35px rgba(248, 113, 113, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 22px 40px rgba(248, 113, 113, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.btn-outline:hover {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.85);
+}
+
+/* HERO IMAGE */
+.hero-image {
+  width: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: radial-gradient(circle at 0 0, rgba(248, 113, 113, 0.4), transparent 55%),
+              radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.45), transparent 55%);
+  animation: float 7s ease-in-out infinite;
+}
+
+.hero-image::after {
+  content: "Aira Enterprises";
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: var(--text-muted);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero-image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 100%;
+}
+
+/* GENERIC SECTION */
+.section {
+  padding: 52px 8%;
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0 10%;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.section:first-of-type::before {
+  border-top: none;
+}
+
+.section-title {
+  margin-bottom: 26px;
+  text-align: left;
+}
+
+.section-title h2 {
+  font-size: 24px;
+  margin-bottom: 6px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+}
+
+.section-title p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+}
+
+.about-text p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.about-points {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.pill {
+  padding: 8px 12px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: var(--text-main);
+}
+
+.about-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-soft);
+  font-size: 13px;
+  color: var(--text-muted);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+/* SERVICES */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: radial-gradient(circle at 0 0, rgba(248, 113, 113, 0.08), transparent 40%),
+              radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.1), transparent 42%),
+              rgba(15, 23, 42, 0.95);
+  border-radius: var(--radius-xl);
+  padding: 18px 16px 16px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, var(--accent-soft), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card h3 {
+  font-size: 15px;
+  color: #e5e7eb;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 9px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 999px;
+  margin-top: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+.price {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card .btn-primary {
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 9px 16px;
+  align-self: flex-start;
+}
+
+/* PRICING */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.pricing-card {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 24px;
+  padding: 20px 18px 18px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 0, rgba(248, 113, 113, 0.15), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.pricing-card:hover::after {
+  opacity: 1;
+}
+
+.pricing-card.highlight {
+  border-color: rgba(248, 113, 113, 0.9);
+  box-shadow: 0 22px 60px rgba(248, 113, 113, 0.4);
+  transform: translateY(-3px);
+}
+
+.pricing-card h3 {
+  font-size: 17px;
+  color: #e5e7eb;
+}
+
+.pricing-amount {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 6px 0 2px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pricing-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.pricing-list {
+  list-style: none;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 8px 0 10px;
+}
+
+.pricing-list li {
+  margin-bottom: 4px;
+}
+
+.pricing-list li::before {
+  content: "• ";
+  color: #e5e7eb;
+}
+
+.pricing-card .btn-primary,
+.pricing-card .btn-outline {
+  font-size: 12px;
+  padding: 9px 16px;
+}
+
+/* WHY CHOOSE US */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.why-item {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 18px;
+  padding: 15px 14px;
+  box-shadow: var(--shadow-soft);
+  font-size: 13px;
+  color: var(--text-muted);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.why-item h3 {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #e5e7eb;
+}
+
+/* FAQ */
+.faq-list {
+  max-width: 800px;
+}
+
+.faq-item {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+}
+
+.faq-question {
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e5e7eb;
+}
+
+.faq-question span:last-child {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.faq-item.active .faq-question span:last-child {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 16px 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  display: none;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.testimonial-card {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 18px;
+  padding: 16px 14px;
+  box-shadow: var(--shadow-soft);
+  font-size: 13px;
+  color: var(--text-muted);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.testimonial-card .name {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.testimonial-card .role {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* CONTACT */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+}
+
+.contact-info p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.contact-info .line {
+  font-size: 13px;
+  color: #e5e7eb;
+}
+
+.contact-form {
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 22px;
+  padding: 20px 18px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+
+.contact-form h3 {
+  margin-bottom: 10px;
+  font-size: 17px;
+  color: #e5e7eb;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  font-size: 13px;
+  outline: none;
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--text-main);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #22c55e;
+  color: #0b1120;
+  padding: 11px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  box-shadow: 0 18px 35px rgba(22, 163, 74, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 200;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: pulse 2.4s infinite;
+}
+
+.whatsapp-float span {
+  font-size: 18px;
+}
+
+/* FOOTER */
+footer {
+  background: rgba(6, 6, 12, 0.98);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 18px 7%;
+  font-size: 12px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+/* ANIMATIONS */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 18px 35px rgba(22, 163, 74, 0.7);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 24px 45px rgba(22, 163, 74, 0.9);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 18px 35px rgba(22, 163, 74, 0.7);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero-image {
+    order: -1;
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 10px 5%;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .section {
+    padding: 40px 6%;
+  }
+
+  .hero {
+    padding: 38px 6%;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">Aira Enterprises</div>
+    <nav>
+      <ul>
+        <li><a href="online store.html">Home</a></li>
+        <li><a href="online store.html#services">Services</a></li>
+        <li><a href="online store.html#pricing">Pricing</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="online store.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-btn" onclick="window.location.href='auth.html'">
+      Login / Signup
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div>
+      <div class="hero-tags">Online Business · Branding · Smart Selling</div>
+      <h1>Grow Your <span>Own Business</span> with Aira Enterprises</h1>
+      <p>
+        Professional solutions for your online business. From product listing
+        to customer handling – turn your ideas into income with a powerful online presence.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary">Get Started Today</button>
+        <button class="btn-outline" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">View Pricing</button>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1000&q=80" alt="Business workspace">
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-title">
+      <h2>Services / Products</h2>
+      <p>Here you can enter the names of your real services/products.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Online Product Setup</h3>
+        <p>We help you list and manage your products online.</p>
+        <span class="tag">Service</span>
+        <div class="price">Starting from ₹999</div>
+        <button class="btn-primary">Enquire Now</button>
+      </div>
+
+      <div class="card">
+        <h3>Custom Website Design</h3>
+        <p>Clean and mobile-friendly website for your brand and online store.</p>
+        <span class="tag">Service</span>
+        <div class="price">Starting from ₹4,999</div>
+        <button class="btn-primary">Enquire Now</button>
+      </div>
+
+      <div class="card">
+        <h3>Digital Products (Future)</h3>
+        <p>E-books, templates, planners or business kits that you can sell 24/7.</p>
+        <span class="tag">Digital</span>
+        <div class="price">Coming Soon</div>
+        <button class="btn-outline">Notify Me</button>
+      </div>
+
+      <div class="card">
+        <h3>Custom Package</h3>
+        <p>Mix of services according to your budget and goals.</p>
+        <span class="tag">Custom Plan</span>
+        <div class="price">Let’s Discuss</div>
+        <button class="btn-primary">Book Free Call</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="section-title">
+      <h2>Simple & Clear Pricing</h2>
+      <p>Plans for everyone—from beginners to serious business owners.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Starter Plan -->
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <div class="pricing-amount">₹999</div>
+        <div class="pricing-note">Perfect for testing your idea</div>
+        <ul class="pricing-list">
+          <li>1 basic service (choose any one)</li>
+          <li>30 min WhatsApp / call support</li>
+          <li>Basic guidance to get started</li>
+          <li>Delivery within 3–5 days</li>
+        </ul>
+        <button class="btn-outline">Enquire for Starter</button>
+      </div>
+
+      <!-- Standard Plan -->
+      <div class="pricing-card highlight">
+        <h3>Standard</h3>
+        <div class="pricing-amount">₹2,999</div>
+        <div class="pricing-note">Best for small business owners</div>
+        <ul class="pricing-list">
+          <li>Website or online product setup</li>
+          <li>2–3 small changes / revisions</li>
+          <li>WhatsApp support for 15 days</li>
+          <li>Basic growth checklist</li>
+        </ul>
+        <button class="btn-primary">Choose Standard</button>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="pricing-card">
+        <h3>Premium</h3>
+        <div class="pricing-amount">₹6,999+</div>
+        <div class="pricing-note">For serious growth & long-term support</div>
+        <ul class="pricing-list">
+          <li>Custom strategy + full setup</li>
+          <li>Support up to 30 days</li>
+          <li>Content / listing guidance</li>
+          <li>Priority WhatsApp support</li>
+        </ul>
+        <button class="btn-outline">Discuss Premium Plan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-title">
+      <h2>About Aira Enterprises</h2>
+      <p>Short story about you and your business.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Aira Enterprises is a growing brand focused on helping small
+          businesses and individuals start their online journey. You can
+          change this text according to your own story.
+        </p>
+        <p>
+          Write what you offer, what your vision is, and why people should trust you.
+        </p>
+
+        <div class="about-points">
+          <div class="pill">Personal attention to every client</div>
+          <div class="pill">Affordable packages for beginners</div>
+          <div class="pill">Online selling guidance</div>
+          <div class="pill">Long-term business vision</div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <strong>Quick Info:</strong><br/><br/>
+        <b>Founder:</b> Aira<br/>
+        <b>Based in:</b> India (serving online clients across India)<br/>
+        <b>Focus:</b> Online business setup, digital products<br/><br/>
+        <b>Goal:</b> To help people start and scale their online income
+        without confusion and overthinking.
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Why Choose Aira Enterprises?</h2>
+      <p>Clear benefits for clients are listed here.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <h3>Beginner Friendly</h3>
+        <p>Step-by-step guidance for people who are completely new to online business.</p>
+      </div>
+      <div class="why-item">
+        <h3>Custom Strategy</h3>
+        <p>Solutions based on your skills, budget, and time – not random copy-paste plans.</p>
+      </div>
+      <div class="why-item">
+        <h3>Transparent Pricing</h3>
+        <p>No hidden charges, no confusion. Clear and simple packages.</p>
+      </div>
+      <div class="why-item">
+        <h3>Long-Term Support</h3>
+        <p>Not just the launch – we help you learn to manage things yourself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+      <p>Common questions clients usually ask.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>1. Is your work online or offline?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          The entire process is online – through calls, WhatsApp, or Google Meet.
+          No matter where you are in India, we can work together.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>2. How do I make the payment?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          UPI, bank transfer, or payment gateway (coming soon). Usually 50% advance
+          and 50% after work preview/approval. All details are shared clearly in advance.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>3. What if I need changes?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Each package includes limited revisions (Starter includes basic,
+          Standard/Premium includes more). We clearly tell you how many revisions are included.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>4. What is the delivery time?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Simple work: 3–5 days  
+          Website or heavy setup: 7–14 days  
+          Exact timeline is shared after project discussion.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="section-title">
+      <h2>What Clients Will Say (Future)</h2>
+      <p>These are sample texts. Add real feedback later.</p>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial-card">
+        “Aira helped me understand online selling and set up my first product
+        listing without any confusion.”
+        <div class="name">— Sample Client</div>
+        <div class="role">Small Business Owner</div>
+      </div>
+
+      <div class="testimonial-card">
+        “The website design was clean, simple and exactly what I needed to
+        start getting enquiries.”
+        <div class="name">— Another Client</div>
+        <div class="role">Freelancer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-title">
+      <h2>Contact & Enquiry</h2>
+      <p>People can directly contact you from here.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Fill the form or contact directly:</p>
+        <p class="line"><b>Email:</b> nikitabali023@gmail.com</p>
+        <p class="line"><b>WhatsApp:</b> +91-78141-74363</p>
+        <p class="line"><b>Instagram:</b> @your_business_id</p>
+        <br />
+        <p style="font-size: 13px; color: #777;">
+          Note: These are demo details. Replace them with your real ones.
+        </p>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send an Enquiry</h3>
+        <form>
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <input type="text" placeholder="Service / Product you are interested in" />
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP FLOAT BUTTON -->
+  <a href="https://wa.me/7814174363?text=Hi%20Aira,%20I%20want%20to%20know%20more%20about%20your%20services."
+     class="whatsapp-float" target="_blank">
+    <span>💬</span> Chat on WhatsApp
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Aira Enterprises · All rights reserved.
+  </footer>
+
+  <!-- SIMPLE FAQ SCRIPT -->
+  <script>
+    function toggleFAQ(el) {
+      const item = el.parentElement;
+      item.classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
